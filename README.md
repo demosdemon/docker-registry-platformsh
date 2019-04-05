@@ -2,10 +2,10 @@
 
 A Docker Registry implementation for Platform.sh
 
-## Required Build Variables
+## Required Environment Variables
 
 ```sh
-platform variable:create --level project --name=env:VARIABLE --value=VALUE --sensitive=true --visible-runtime=false --yes --no-wait
+platform variable:create --level project --name=env:VARIABLE --value=VALUE --sensitive=true --yes --no-wait
 ```
 
 - PKI_SERVER_PRIVATE_KEY - the private key used by the token authentication server
