@@ -14,15 +14,25 @@ platform variable:create --level project --name=env:VARIABLE --value=VALUE --sen
 
 ```sh
 cd ~/src
-git clone https;//github.com/OpenVPN/easy-rsa.git
-cd easy-rsa/easyrsa3
+git clone https://github.com/OpenVPN/easy-rsa.git
+git clone https://github.com/demosdemon/docker-registry-platformsh
+
+cd ~/src/easy-rsa/easyrsa3
 ./easyrsa init-pki
 ./easyrsa build-ca
 ./easyrsa build-server-full token-auth nopass
+
 cd ~/src/docker-registry-platformsh
+platform project:create --title "Docker Registry" --region=us-2.platform.sh --yes > .platform/project
+platform project:set-remote $(< .platform/project)
 platform variable:create --level project --name=env:PKI_SERVER_PRIVATE_KEY --sensitive=true --value="$(< $HOME/src/easy-rsa/easyrsa3/pki/private/token-auth.key)" --yes --no-wait
 cat $HOME/src/easy-rsa/easyrsa3/pki/{ca.crt,auth/server.crt} > registry/bundle.crt
 cp $HOME/src/easy-rsa/easyrsa3/pki/issued/token-auth.crt auth/server.crt
+# configure auth/config.yml
+# (see https://github.com/cesanta/docker_auth/tree/master/examples)
+git add .
+git commit -m 'customize'
+platform push --force-with-lease --set-upstream --wait
 ```
 
 ```sh
