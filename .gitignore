@@ -1,0 +1,6 @@
+/auth/bin/auth_server
+/go.mod
+/registry/bin/config
+/registry/bin/registry
+/registry/etc/docker/registry/config.yml
+/registry/var/lib/registry/
