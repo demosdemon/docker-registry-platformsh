@@ -26,7 +26,7 @@ web:
     protocol: http
   # Commands are run once after deployment to start the application process.
   commands:
-    start: registry serve ./etc/docker/registry/config.yml
+    start: registry serve <(config)
   locations:
     /:
       # Route all requests to the Go app, unconditionally.
@@ -46,13 +46,9 @@ mounts:
   /var/log:
     source: local
     source_path: logs
-  /etc/docker/registry:
-    source: local
-    source_path: config
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
   # The build hook runs before the application is deployed, and is useful for
   # assembling the codebase.
   build: ./build.sh
-  deploy: config > ./etc/docker/registry/config.yml

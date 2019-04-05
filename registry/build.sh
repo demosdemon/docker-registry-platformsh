@@ -24,5 +24,5 @@ git clone -b v2.7.1 https://github.com/docker/distribution "$DISTRIBUTION_DIR"
 		file ./bin/registry
 )
 
-mkdir -p bin etc/docker/registry var/lib/registry
+mkdir -p bin var/lib/registry
 cp -a "$DISTRIBUTION_DIR/bin/registry" bin/
