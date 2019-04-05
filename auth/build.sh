@@ -26,3 +26,5 @@ git clone https://github.com/cesanta/docker_auth.git "$outdir"
 
 mkdir -p bin
 cp -a "$outdir/auth_server/auth_server" bin/
+# tidy up the slug
+rm -rf build.sh

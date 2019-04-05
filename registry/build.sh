@@ -26,3 +26,5 @@ git clone -b v2.7.1 https://github.com/docker/distribution "$DISTRIBUTION_DIR"
 
 mkdir -p bin var/lib/registry
 cp -a "$DISTRIBUTION_DIR/bin/registry" bin/
+# tidy up the slug
+rm -rf cmd go go.mod go.sum build.sh
