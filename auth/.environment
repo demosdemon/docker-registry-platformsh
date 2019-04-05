@@ -1,0 +1,1 @@
+export PATH="$PLATFORM_DIR/bin:$PATH"

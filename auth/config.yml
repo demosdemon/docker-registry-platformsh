@@ -1,0 +1,21 @@
+server:
+  addr: ":8888"
+
+token:
+  issuer: "Acme Auth Server"
+  expiration: 900
+  certificate: /app/server.crt
+  key: /tmp/server.key
+
+users:
+  # password is specified as a BCrypt hash. Use `htpasswd -nB USERNAME` to generate.
+  brandon:
+    password: $2y$05$QBqf4QK2G7kZUyBnIVYaw.pj2CsaHynJlCR0.8cZUQbFGxU2MaiRu
+
+acl:
+  - match:
+      account: brandon
+    actions:
+      - "*"
+    comment: brandon is the supreme overlord
+# access is denied by default
