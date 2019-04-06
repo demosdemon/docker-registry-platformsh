@@ -2,3 +2,6 @@ github.com/elgs/gojq v0.0.0-20160421194050-81fa9a608a13 h1:/voSflvo4UvPT0XZy+YQM
 github.com/elgs/gojq v0.0.0-20160421194050-81fa9a608a13/go.mod h1:rQELVIqRXpraeUryHOBadz99ePvEVQmTVpGr8M9QQ4Q=
 github.com/elgs/gosplitargs v0.0.0-20161028071935-a491c5eeb3c8 h1:bD2/rCXwgXJm2vgoSSSCM9IPjVFfEoQFFblzg7HHABI=
 github.com/elgs/gosplitargs v0.0.0-20161028071935-a491c5eeb3c8/go.mod h1:o4DgpccPNAQAlPSxo7I4L/LWNh2oyr/BBGSynrLTmZM=
+golang.org/x/crypto v0.0.0-20190404164418-38d8ce5564a5 h1:bselrhR0Or1vomJZC8ZIjWtbDmn9OYFLX5Ik9alpJpE=
+golang.org/x/crypto v0.0.0-20190404164418-38d8ce5564a5/go.mod h1:WFFai1msRO1wXaEeE5yQxYXgSfI8pQAWXbQop6sCtWE=
+golang.org/x/sys v0.0.0-20190403152447-81d4e9dc473e/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

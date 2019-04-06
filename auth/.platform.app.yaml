@@ -23,7 +23,7 @@ web:
     protocol: http
   # Commands are run once after deployment to start the application process.
   commands:
-    start: auth_server --v=2 --logtostderr=true config.yml
+    start: auth_server --v=2 --logtostderr=true <(config)
   locations:
     /:
       # Route all requests to the Go app, unconditionally.
