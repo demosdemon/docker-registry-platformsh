@@ -36,7 +36,7 @@ web:
       passthru: true
 
 # The size of the persistent disk of the application (in MB).
-disk: 1024
+disk: 4992
 
 # Set a local R/W mount for media
 mounts:
