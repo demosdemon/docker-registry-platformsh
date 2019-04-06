@@ -1,21 +1,33 @@
 server:
-  addr: ":8888"
-
+  addr: :{{ env "PORT" }}
 token:
   issuer: "Acme Auth Server"
   expiration: 900
-  certificate: /app/server.crt
+  certificate: {{ env "PLATFORM_DIR" }}/server.crt
   key: /tmp/server.key
 
 users:
-  # password is specified as a BCrypt hash. Use `htpasswd -nB USERNAME` to generate.
-  brandon:
-    password: $2y$05$QBqf4QK2G7kZUyBnIVYaw.pj2CsaHynJlCR0.8cZUQbFGxU2MaiRu
-
+{{ range $name, $password := (var "users") }}
+  "{{ $name }}":
+    password: {{ bcrypt $password }}
+{{ end }}
 acl:
-  - match:
-      account: brandon
-    actions:
-      - "*"
-    comment: brandon is the supreme overlord
+  - match: {ip: "127.0.0.0/8"}
+    actions: ["*"]
+    comment: Allow everything from localhost (IPv4)
+  - match: {ip: "::1"}
+    actions: ["*"]
+    comment: Allow everything from localhost (IPv6)
+  - match: {account: "admin"}
+    actions: ["*"]
+    comment: Admin has full access to everything
+  - match: {account: "/.+/", name: "${account}/*"}
+    actions: ["*"]
+    comment: Logged in users have full access to images that are in their namespace
+  - match: {account: "/.+", type: "registry", name: "catalog"}
+    actions: ["*"]
+    comments: Logged in users can query the catalog.
+  - match: {name: "${labels:project}/*"}
+    actions: ["push", "pull"]
+    comment: Users can push to any project they are assigned to
 # access is denied by default
