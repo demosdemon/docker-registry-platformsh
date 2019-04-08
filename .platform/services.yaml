@@ -10,4 +10,5 @@ rediscache:
 
 files:
   type: network-storage:1.0
-  disk: 4992
+  # use 4736 if your subscription only allows 5G
+  disk: 9856
