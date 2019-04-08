@@ -1,0 +1,9 @@
+[submodule "registry"]
+	path = registry
+	url = https://github.com/demosdemon/docker-registry.git
+[submodule "auth"]
+	path = auth
+	url = https://github.com/demosdemon/docker-registry-auth.git
+[submodule "root"]
+	path = root
+	url = https://github.com/demosdemon/docker-registry-root.git

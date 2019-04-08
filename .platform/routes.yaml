@@ -4,18 +4,14 @@
 #
 # See https://docs.platform.sh/user_guide/reference/routes-yaml.html
 
-https://registry.{default}/:
+https://{all}/:
   type: upstream
-  upstream: registry:http
+  upstream: app:http
 
-https://auth.{default}/:
+https://{default}/auth:
   type: upstream
   upstream: auth:http
 
-https://{default}/:
-  type: redirect
-  to: https://auth.{default}/
-
-https://www.{default}/:
-  type: redirect
-  to: https://auth.{default}/
+https://{all}/v2/:
+  type: upstream
+  upstream: registry:http
